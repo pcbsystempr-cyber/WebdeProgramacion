@@ -525,7 +525,7 @@
                 }
             } catch (error) {
                 console.error('Error saving programmer:', error);
-                alert('Error saving programmer');
+                alert('Error saving programmer: ' + (error && error.message ? error.message : JSON.stringify(error)));
             }
 
             this.reset();
@@ -602,7 +602,7 @@
                 }
             } catch (error) {
                 console.error('Error saving project:', error);
-                alert('Error saving project');
+                alert('Error saving project: ' + (error && error.message ? error.message : JSON.stringify(error)));
             }
 
             this.reset();
@@ -668,7 +668,7 @@
                 createMediaDots();
             } catch (error) {
                 console.error('Error saving media:', error);
-                alert('Error saving media');
+                alert('Error saving media: ' + (error && error.message ? error.message : JSON.stringify(error)));
             }
 
             this.reset();
