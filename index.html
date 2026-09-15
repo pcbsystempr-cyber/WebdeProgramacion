@@ -36,9 +36,7 @@
                         <span></span>
                         <ul class="hamburger-dropdown-menu">
                             <li class="theme-toggle-item">
-                                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme">
-                                    <span id="themeIcon">🌙</span> <span id="themeLabel" data-i18n="theme.dark">Dark</span>
-                                </button>
+                                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme">🌙 Dark</button>
                             </li>
                             <li class="language-toggle-item">
                                 <button class="theme-toggle-btn" id="langToggle" aria-label="Toggle language">
@@ -98,7 +96,7 @@
 
     <section class="about" id="media">
         <div class="container">
-            <h2 data-i18n="section.media">Media Gallery (Videos & Photos)</h2>
+            <h2 data-i18n="section.media">Photos</h2>
             <div id="mediaError"></div>
             <div class="media-carousel" id="mediaCarousel">
                 <div class="media-track" id="mediaTrack">
@@ -257,18 +255,14 @@
         });
 
         const themeToggleBtn = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const themeLabel = document.getElementById('themeLabel');
 
         function applyTheme(theme) {
             if (theme === 'dark') {
                 document.body.classList.add('dark-mode');
-                themeIcon.textContent = '☀️';
-                themeLabel.textContent = 'Light';
+                themeToggleBtn.textContent = '☀️ Light';
             } else {
                 document.body.classList.remove('dark-mode');
-                themeIcon.textContent = '🌙';
-                themeLabel.textContent = 'Dark';
+                themeToggleBtn.textContent = '🌙 Dark';
             }
             localStorage.setItem('theme', theme);
         }
@@ -291,11 +285,11 @@
             es: {
                 'nav.programmers': 'Programadores',
                 'nav.projects': 'Proyectos',
-                'nav.media': 'Medios',
+                'nav.media': 'Fotos',
                 'hero.title': 'PCB Developers',
                 'hero.subtitle': '¿Quiénes somos?<br><br>Somos un grupo de estudiantes programadores que trabajamos para mejorar el funcionamiento y acceso a la información de la escuela.<br><br>Nuestra meta es automatizar, agilizar y ayudar al ambiente escolar a través de nuestras páginas web.',
                 'section.projects': 'Proyectos',
-                'section.media': 'Galería de Medios (Videos y Fotos)',
+                'section.media': 'Galería de Fotos',
                 'section.programmers': 'Programadores',
                 'form.addProject': 'Agregar Nuevo Proyecto',
                 'form.projectName': 'Nombre del Proyecto',
@@ -304,7 +298,7 @@
                 'form.icon': 'Icono / Emoji',
                 'form.url': 'URL del Enlace (opcional)',
                 'form.addProjectBtn': 'Agregar Proyecto',
-                'form.addMedia': 'Agregar Nuevo Medio',
+                'form.addMedia': 'Agregar Nueva Foto',
                 'form.mediaType': 'Tipo de Medio',
                 'form.photo': 'Foto',
                 'form.video': 'Video',
@@ -473,8 +467,8 @@
             });
 
             const themeKey = document.body.classList.contains('dark-mode') ? 'theme.dark' : 'theme.light';
-            if (themeLabel) {
-                themeLabel.textContent = t[themeKey] || themeLabel.textContent;
+            if (themeToggleBtn) {
+                themeToggleBtn.textContent = (theme === 'dark' ? '☀️ ' : '🌙 ') + (t[themeKey] || (theme === 'dark' ? 'Light' : 'Dark'));
             }
 
             const langBtn = document.getElementById('langToggle');
