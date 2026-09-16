@@ -30,7 +30,7 @@ body.dark-mode {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #BBDEFB 0%, #CFD8DC 100%);
+    background: #ffffff;
     min-height: 100vh;
     color: var(--text-dark);
     overflow-x: hidden;
@@ -512,6 +512,10 @@ body.dark-mode #programmers .project-author {
 /* News/Projects Section */
 .news {
     padding: 80px 20px;
+    background: #ffffff;
+}
+
+body.dark-mode .news {
     background: var(--light-color);
 }
 
@@ -693,6 +697,10 @@ body.dark-mode #programmers .project-author {
 /* About/Media Section */
 .about {
     padding: 80px 20px;
+    background: #ffffff;
+}
+
+body.dark-mode .about {
     background: var(--light-color);
 }
 
@@ -860,6 +868,10 @@ body.dark-mode .form-group label {
 .submit-service-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .submit-service-btn {
+    color: #ffffff;
 }
 
 /* Edit Modal */
@@ -1106,6 +1118,11 @@ body.admin-visible .delete-btn {
 
 .delete-btn:hover {
     transform: translateY(-2px);
+}
+
+body.dark-mode .edit-btn,
+body.dark-mode .delete-btn {
+    color: #ffffff;
 }
 
 /* Footer */
