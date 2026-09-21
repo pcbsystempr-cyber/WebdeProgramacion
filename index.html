@@ -234,6 +234,7 @@
                 document.body.classList.add('admin-visible');
                 toggleAdminVisibility();
                 closeAdminModal();
+                document.getElementById('adminToggle').textContent = translations[currentLanguage]['admin.exit'];
             } else {
                 alert(translations[currentLanguage]['alert.incorrectPassword']);
             }
@@ -245,10 +246,12 @@
         });
 
         document.getElementById('adminToggle').addEventListener('click', function() {
+            const btn = this;
             if (isAdmin) {
                 isAdmin = false;
                 document.body.classList.remove('admin-visible');
                 toggleAdminVisibility();
+                btn.textContent = translations[currentLanguage]['admin.toggle'];
                 return;
             }
             openAdminModal();
@@ -315,6 +318,7 @@
                 'page.title': 'Registro de Programadores',
                 'admin.login': 'Inicio de Sesión de Admin',
                 'admin.toggle': 'Admin',
+                'admin.exit': 'Salir',
                 'admin.enterPassword': 'Ingrese la contraseña',
                 'admin.cancel': 'Cancelar',
                 'admin.loginBtn': 'Iniciar Sesión',
@@ -389,6 +393,7 @@
                 'page.title': 'Programmer Records',
                 'admin.login': 'Admin Login',
                 'admin.toggle': 'Admin',
+                'admin.exit': 'Exit',
                 'admin.enterPassword': 'Enter password',
                 'admin.cancel': 'Cancel',
                 'admin.loginBtn': 'Login',
@@ -466,9 +471,10 @@
                 }
             });
 
-            const themeKey = document.body.classList.contains('dark-mode') ? 'theme.dark' : 'theme.light';
+            const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            const themeKey = currentTheme === 'dark' ? 'theme.dark' : 'theme.light';
             if (themeToggleBtn) {
-                themeToggleBtn.textContent = (theme === 'dark' ? '☀️ ' : '🌙 ') + (t[themeKey] || (theme === 'dark' ? 'Light' : 'Dark'));
+                themeToggleBtn.textContent = (currentTheme === 'dark' ? '☀️ ' : '🌙 ') + (t[themeKey] || (currentTheme === 'dark' ? 'Light' : 'Dark'));
             }
 
             const langBtn = document.getElementById('langToggle');
@@ -477,6 +483,11 @@
                 if (label) {
                     label.textContent = t['lang.' + lang] || (lang === 'es' ? 'ES' : 'EN');
                 }
+            }
+
+            const adminBtn = document.getElementById('adminToggle');
+            if (adminBtn) {
+                adminBtn.textContent = isAdmin ? (t['admin.exit'] || (lang === 'es' ? 'Salir' : 'Exit')) : (t['admin.toggle'] || (lang === 'es' ? 'Admin' : 'Admin'));
             }
 
             updateDynamicLanguage();
